@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "dgSpecHash": "CWBQ8+h88wom4yrmXj+jsnO9HdkNPgA3yA7COFFXBWasSjUIF+EArLntZ/zdCKQmBOJUMFCZVoQ6aLdlQo4o8g==",
+  "success": true,
+  "projectFilePath": "/home/renato/Documentos/UAGRM Virtual/2021/II-2021/Programación Gráfica (ELC-102)/Proyectos/Estructura/Estructura/Estructura.csproj",
+  "expectedPackageFiles": [
+    "/home/renato/.nuget/packages/opentk/3.3.2/opentk.3.3.2.nupkg.sha512",
+    "/home/renato/.nuget/packages/microsoft.aspnetcore.app.ref/5.0.0/microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'OpenTK 3.3.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
+      "libraryId": "OpenTK",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
+}
