@@ -16,10 +16,10 @@ namespace Estructura
                 face.Center = Center;
         }
 
-        public void Draw()
+        public void Draw(int TextureType)
         {
             foreach (var face in ListOfFaces)
-                face.Draw();
+                face.Draw(TextureType);
         }
     }
 }

@@ -18,13 +18,18 @@ namespace Estructura
             Center = center;
         }
 
-        public void Draw()
+        public void Draw(int TextureType)
         {
             GL.Color4(Color);
-            GL.Begin(PrimitiveType.Polygon);
+            GL.Begin((PrimitiveType) TextureType);
+            // GL.Begin((PrimitiveType) 2);
             foreach (var vertex in ListOfVertices)
+            {
                 GL.Vertex3(vertex.X + Center.X, vertex.Y + Center.Y, vertex.Z + Center.Z);
+            }
+
             GL.End();
+            GL.Flush();
         }
     }
 }

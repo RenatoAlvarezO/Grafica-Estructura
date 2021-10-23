@@ -12,10 +12,10 @@ namespace Estructura
             this.listOfObject3Ds = listOfObject3Ds;
         }
 
-        public void Draw()
+        public void Draw(int TextureType)
         {
             foreach (var object3D in listOfObject3Ds)
-                object3D.Draw();
+                object3D.Draw(TextureType);
 
         }
     }

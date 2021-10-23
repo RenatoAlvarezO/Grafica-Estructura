@@ -10,9 +10,7 @@ namespace Estructura
 {
     public class Game : GameWindow
     {
-        // private House _house;
-        private Face _face;
-        private Object3D _object3D;
+        private int TextureType = 2;
 
         private Scene _scene;
 
@@ -23,11 +21,24 @@ namespace Estructura
         protected override void OnUpdateFrame(FrameEventArgs e)
         {
             KeyboardState inputKey = Keyboard.GetState();
-            GL.Rotate(1, 0.0f, 1f, 0.0f);
-            if (inputKey.IsKeyDown(Key.W))
-            {
-                while (Keyboard.GetState().IsKeyDown(Key.W)) ;
-            }
+            GL.Rotate(1, 0.0f, 1.0f, 0.0f);
+            if (inputKey.IsKeyDown(Key.Number0)) TextureType = 0;
+            else if (inputKey.IsKeyDown(Key.Number1)) TextureType = 1;
+            else if (inputKey.IsKeyDown(Key.Number2)) TextureType = 2;
+            else if (inputKey.IsKeyDown(Key.Number3)) TextureType = 3;
+            else if (inputKey.IsKeyDown(Key.Number4)) TextureType = 4;
+            else if (inputKey.IsKeyDown(Key.Number5)) TextureType = 5;
+            else if (inputKey.IsKeyDown(Key.Number6)) TextureType = 6;
+            else if (inputKey.IsKeyDown(Key.Number7)) TextureType = 7;
+            else if (inputKey.IsKeyDown(Key.Number8)) TextureType = 8;
+            else if (inputKey.IsKeyDown(Key.Number9)) TextureType = 9;
+            else if (inputKey.IsKeyDown(Key.Q)) TextureType = 10;
+            else if (inputKey.IsKeyDown(Key.W)) TextureType = 11;
+            else if (inputKey.IsKeyDown(Key.E)) TextureType = 12;
+            else if (inputKey.IsKeyDown(Key.R)) TextureType = 13;
+            else if (inputKey.IsKeyDown(Key.T)) TextureType = 14;
+            else if (inputKey.IsKeyDown(Key.Y)) TextureType = 15;
+            else if (inputKey.IsKeyDown(Key.U)) TextureType = 16;
 
             base.OnUpdateFrame(e);
         }
@@ -37,33 +48,19 @@ namespace Estructura
             Color backgroundColor = Color.FromArgb(255, 65, 87, 63);
             GL.ClearColor(backgroundColor);
 
-            
-            //  Lista de Vertices para las Caras, esto hace un cuadrado
-            List<Vector3> vertices = new List<Vector3>();
-            vertices.Add(new Vector3(50f, 0f, 0f));
-            vertices.Add(new Vector3(50f, 50f, 0f));
-            vertices.Add(new Vector3(0f, 50f, 0f));
-            vertices.Add(new Vector3(0.0f, 0f, 0f));
-
-            List<Vector3> vertices2 = new List<Vector3>();
-            vertices2.Add(new Vector3(0.0f, 50f, 0f));
-            vertices2.Add(new Vector3(0.0f, 50f, 50f));
-            vertices2.Add(new Vector3(0f, 0f, 50f));
-            vertices2.Add(new Vector3(0f, 0.0f, 0f));
-
-
-            List<Face> faces2 = new List<Face>();
-            faces2.Add(new Face(vertices, Color.Aqua, new Vector3(0f, 0f, 0f)));
-            faces2.Add(new Face(vertices2, Color.Gold, new Vector3(0f, 0f, 0f)));
+            Object3D cube = ObjLoader.loadObj("../../../Casa.obj", new Vector3(0f, 0f, 0f));
+            Object3D roof = ObjLoader.loadObj("../../../Techo.obj", new Vector3(0f, 1.5f, 0f));
+            Object3D cone = ObjLoader.loadObj("../../../Cono.obj", new Vector3(2.5f, 0f, 0f));
 
 
             List<Object3D> objects = new List<Object3D>();
-            objects.Add(new Object3D(faces, new Vector3(0f, 0f, 0f)));
-            objects.Add(new Object3D(faces2, new Vector3(50f, 50f, 0f)));
-            
+            objects.Add(cube);
+            objects.Add(roof);
+            objects.Add(cone);
+
             _scene = new Scene(objects);
-            
-            int orthoSize = 200;
+
+            int orthoSize = 5;
             GL.Ortho(-orthoSize, orthoSize, -orthoSize, orthoSize, -orthoSize, orthoSize);
             GL.Rotate(10, 0.2f, 0.1f, 0.1f);
             base.OnLoad(e);
@@ -72,8 +69,8 @@ namespace Estructura
         protected override void OnRenderFrame(FrameEventArgs e)
         {
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-
-            _scene.Draw();
+            GL.Enable(EnableCap.DepthTest);
+            _scene.Draw(TextureType);
             Context.SwapBuffers();
             base.OnRenderFrame(e);
         }
