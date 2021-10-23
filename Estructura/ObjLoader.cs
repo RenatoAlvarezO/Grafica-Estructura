@@ -92,17 +92,6 @@ namespace Estructura
                             }
 
                             faces.Add(new Face(faceVertices, colors[faces.Count % colors.Count], center));
-                            // var random = new Random();
-                            // if (faces.Count < 2)
-                            // {
-                            //     faces.Add(new Face(faceVertices,
-                            //         Color.Gold, center));
-                            // }
-                            // else
-                            // {
-                            //     faces.Add(new Face(faceVertices,
-                            //         Color.FromArgb(255, random.Next(255), random.Next(255), random.Next(255)), center));
-                            // }
 
                             break;
                     }
